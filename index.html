@@ -444,17 +444,39 @@
                 const rsvpForm = document.getElementById("rsvpForm");
                 const successSection = document.getElementById("SECTION_POPUP");
                 const closeBtn = document.getElementById("closePopupBtn"); 
-            
-                // Hàm hiển thị Popup
+                // Thêm phần tử POPUP4
+                const popup4 = document.getElementById("POPUP4");
+                
+                // Hàm hiển thị Popup Đã Tối Ưu
                 function showSuccessPopup() {
-                    successSection.style.display = 'block'; 
+                    if (successSection) {
+                        // 1. Hiện phần section bao bọc
+                        successSection.style.display = 'block';
+                        successSection.style.opacity = '1';      // Đảm bảo không bị ẩn bởi opacity
+                        successSection.style.visibility = 'visible'; // Đảm bảo không bị ẩn bởi visibility
+                    }
+                    
+                    if (popup4) {
+                        // 2. Hiện phần tử popup bên trong (để nó nổi lên)
+                        popup4.style.display = 'block';
+                        popup4.style.opacity = '1';
+                        popup4.style.visibility = 'visible';
+                        
+                        // 3. Đặt Z-index cao để đảm bảo nó nổi trên cùng (rất quan trọng cho popup)
+                        successSection.style.zIndex = '99999';
+                    }
                 }
-            
-                // Hàm ẩn Popup
+                
+                // Hàm ẩn Popup Đã Tối Ưu
                 function hideSuccessPopup() {
-                    successSection.style.display = 'none';
+                    if (successSection) {
+                        successSection.style.display = 'none';
+                        successSection.style.opacity = '0';
+                        successSection.style.visibility = 'hidden';
+                        successSection.style.zIndex = 'auto'; // Trả về z-index
+                    }
                 }
-            
+                
                 // 3. Xử lý sự kiện Gửi Form
                 rsvpForm.addEventListener("submit", function(event) {
                     // Form gửi qua iframe ẩn
@@ -463,17 +485,21 @@
                         // Reset form sau khi gửi
                         this.reset(); 
                         
-                        // **Hiển thị Popup thành công (thay cho alert)**
+                        // **Hiển thị Popup thành công**
                         showSuccessPopup(); 
                         
-                    }, 500); // 500ms là đủ cho quá trình gửi form ẩn
+                    }, 500); 
                 });
-            
+                
                 // 4. Xử lý sự kiện Đóng Popup
-                closeBtn.addEventListener("click", hideSuccessPopup);
-            
+                if (closeBtn) {
+                    closeBtn.addEventListener("click", hideSuccessPopup);
+                }
+                
                 // *Quan trọng*: Ban đầu, đảm bảo SECTION_POPUP bị ẩn khi tải trang
-                successSection.style.display = 'none';
+                if (successSection) {
+                    hideSuccessPopup(); // Dùng hàm ẩn ngay khi tải trang
+                }
             
             </script>
             <div id="SECTION10" class="ladi-section">
