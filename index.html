@@ -424,26 +424,14 @@
                 </div>
             </div>
             <script>
+                // tự động điền URL trang hiện tại
                 document.getElementById("page_url").value = window.location.href;
 
-                document.getElementById("rsvpForm").addEventListener("submit", function(e){
-                    e.preventDefault();
-                    const form = e.target;
-
-                    fetch(form.action, {
-                        method: "POST",
-                        body: new FormData(form)
-                    })
-                    .then(res => res.json())
-                    .then(data => {
-                        if (data.status === "success") {
-                            alert("Gửi thành công! Cám ơn Quý Khách ♥");
-                            form.reset();
-                        } else {
-                            alert("Gửi thất bại, vui lòng thử lại!");
-                        }
-                    })
-                    .catch(err => alert("Lỗi gửi form, vui lòng thử lại!"));
+                // optional: thông báo khi submit xong
+                document.getElementById("rsvpForm").addEventListener("submit", function() {
+                    setTimeout(() => alert("Gửi thành công! Cám ơn Quý Khách ♥"), 500);
+                    // reset form
+                    this.reset();
                 });
             </script>
             <div id="SECTION10" class="ladi-section">
