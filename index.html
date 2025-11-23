@@ -700,7 +700,7 @@
         <script>
         document.addEventListener("DOMContentLoaded", function () {
             
-            const ICONS = ["❤️", "🌸", "✨", "💖", "💮", "💍", "🥂", "🕊️", "🌺"];
+            const ICONS = ["❤️", "🌸", "✨", "💖", "💮"];
 
             function createHeart() {
                 let item = document.createElement("div");
@@ -710,7 +710,7 @@
                 
                 item.classList.add("heart"); 
 
-                let size = Math.random() * 8 + 6;
+                let size = Math.random() * 8 + 8;
                 item.style.fontSize = size + "px";
                 item.style.left = Math.random() * 100 + "vw";
 
