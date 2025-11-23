@@ -359,13 +359,17 @@
             <div id="SECTION8" class="ladi-section">
                 <div class="ladi-section-background"></div>
                 <div class="ladi-container">
+
                     <div id="BOX9" class="ladi-element">
                         <div class="ladi-box ladi-transition"></div>
                     </div>
-                    <div id="FORM2" class="ladi-element">
-                        <form id="rsvpForm" autocomplete="off" method="post" action="https://script.google.com/macros/s/AKfycbzVGs7ZuCV3GGWZyxFqeVnVbynFLpSLiV_BpPf2PfBC3VGAYvAWFHwPCQM7X06xlPuG/exec" class="ladi-form">
 
-                            <input type="hidden" name="page_url" id="page_url">
+                    <div id="FORM2" class="ladi-element">
+                        <form id="rsvpForm" autocomplete="off" method="post" 
+                            action="https://script.google.com/macros/s/AKfycbye5u2qWX6r-u0p-1pVG54wtRwXrOAVQFYUn9C-LTCrwzVNtj0CfGUKmeijgJE02u87/exec" 
+                            class="ladi-form" target="hidden_iframe">
+
+                            <input type="hidden" name="page_url" id="page_url" value="https://valkil.github.io/thiep-cuoi/">
 
                             <div id="BUTTON4" class="ladi-element ladi-animation">
                                 <div class="ladi-button">
@@ -410,28 +414,40 @@
                             <button type="submit" class="ladi-hidden"></button>
                         </form>
                     </div>
+
+                    <iframe name="hidden_iframe" style="display:none;"></iframe>
+
                     <div id="HEADLINE44" class="ladi-element ladi-animation">
                         <h3 class="ladi-headline">Xác nhận tham dự&nbsp;</h3> 
                     </div>
+
                     <div id="IMAGE197" class="ladi-element ladi-animation">
                         <div class="ladi-image">
                             <div class="ladi-image-background"></div>
                         </div>
                     </div>
+
                     <div id="HEADLINE145" class="ladi-element ladi-animation">
-                        <h3 class="ladi-headline"> Hãy xác nhận sự có mặt của Quý khách để gia đình<br>có thể đón tiếp một cách chu đáo nhất.<br>Trân thành cảm ơn!<br></h3> 
+                        <h3 class="ladi-headline">
+                            Hãy xác nhận sự có mặt của Quý khách để gia đình<br>
+                            có thể đón tiếp một cách chu đáo nhất.<br>
+                            Trân thành cảm ơn!<br>
+                        </h3> 
                     </div>
+
                 </div>
             </div>
+
             <script>
                 // tự động điền URL trang hiện tại
                 document.getElementById("page_url").value = window.location.href;
 
-                // optional: thông báo khi submit xong
+                // hiển thị thông báo khi gửi xong
                 document.getElementById("rsvpForm").addEventListener("submit", function() {
-                    setTimeout(() => alert("Gửi thành công! Cám ơn Quý Khách ♥"), 500);
-                    // reset form
-                    this.reset();
+                    setTimeout(() => {
+                        alert("Gửi thành công! Cám ơn Quý Khách ♥");
+                        this.reset();
+                    }, 500);
                 });
             </script>
             <div id="SECTION10" class="ladi-section">
