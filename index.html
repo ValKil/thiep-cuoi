@@ -359,27 +359,26 @@
             <div id="SECTION8" class="ladi-section">
                 <div class="ladi-section-background"></div>
                 <div class="ladi-container">
-
+            
                     <div id="BOX9" class="ladi-element">
                         <div class="ladi-box ladi-transition"></div>
                     </div>
-
+            
                     <div id="FORM2" class="ladi-element">
                         <form id="rsvpForm" autocomplete="off" method="post" 
-                            action="https://script.google.com/macros/s/AKfycby5Co44RLseOo4ilZJjvx0Pns_O9PRYrP-XQ_6CXw6aA0r0uol6ieQ4AGzXO4P5xnCr/exec" 
+                            action="**ĐIỀN_URL_GOOGLE_SCRIPT_CỦA_BẠN_VÀO_ĐÂY**" 
                             class="ladi-form" target="hidden_iframe">
-
+            
                             <input type="hidden" name="page_url" id="page_url" value="https://valkil.github.io/thiep-cuoi/">
-
-                            <div id="BUTTON4" class="ladi-element ladi-animation">
+            
+                            <button type="submit" id="BUTTON4" class="ladi-element ladi-animation">
                                 <div class="ladi-button">
                                     <div class="ladi-button-background"></div>
                                     <div id="BUTTON_TEXT4" class="ladi-element ladi-button-headline">
                                         <p class="ladi-headline">Gửi ngay</p>
                                     </div>
                                 </div>
-                            </div>
-
+                            </button>
                             <div id="FORM_ITEM2" class="ladi-element">
                                 <div class="ladi-form-item-container">
                                     <div class="ladi-form-item-background"></div>
@@ -388,7 +387,7 @@
                                     </div>
                                 </div>
                             </div>
-
+            
                             <div id="FORM_ITEM5" class="ladi-element">
                                 <div class="ladi-form-item-container">
                                     <div class="ladi-form-item-background"></div>
@@ -397,7 +396,7 @@
                                     </div>
                                 </div>
                             </div>
-
+            
                             <div id="FORM_ITEM7" class="ladi-element">
                                 <div class="ladi-form-item-container">
                                     <div class="ladi-form-item-background"></div>
@@ -410,40 +409,40 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <button type="submit" class="ladi-hidden"></button>
-                        </form>
+            
+                            </form>
                     </div>
-
+            
                     <iframe name="hidden_iframe" style="display:none;"></iframe>
-
+            
                     <div id="HEADLINE44" class="ladi-element ladi-animation">
-                        <h3 class="ladi-headline">Xác nhận tham dự&nbsp;</h3> 
+                        <h3 class="ladi-headline">Xác nhận tham dự&nbsp;</h3>
                     </div>
-
+            
                     <div id="IMAGE197" class="ladi-element ladi-animation">
                         <div class="ladi-image">
                             <div class="ladi-image-background"></div>
                         </div>
                     </div>
-
+            
                     <div id="HEADLINE145" class="ladi-element ladi-animation">
                         <h3 class="ladi-headline">
                             Hãy xác nhận sự có mặt của Quý khách để gia đình<br>
                             có thể đón tiếp một cách chu đáo nhất.<br>
                             Trân thành cảm ơn!<br>
-                        </h3> 
+                        </h3>
                     </div>
-
+            
                 </div>
             </div>
-
+            
             <script>
                 // tự động điền URL trang hiện tại
                 document.getElementById("page_url").value = window.location.href;
-
+            
                 // hiển thị thông báo khi gửi xong
                 document.getElementById("rsvpForm").addEventListener("submit", function() {
+                    // Tùy chọn: Thêm một delay ngắn để form có thời gian gửi
                     setTimeout(() => {
                         alert("Gửi thành công! Cám ơn Quý Khách ♥");
                         this.reset();
