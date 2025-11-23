@@ -676,23 +676,30 @@
   </script>
         <script>
     document.addEventListener("DOMContentLoaded", function () {
+        const ICONS = ["❤️", "🌸", "✨", "💖", "💮"];
         function createHeart() {
-            let heart = document.createElement("div");
-            heart.innerHTML = "❤️";
-            heart.classList.add("heart");
+            let item = document.createElement("div");
+            
+            // Chọn icon ngẫu nhiên từ mảng ICONS
+            let randomIndex = Math.floor(Math.random() * ICONS.length);
+            let randomIcon = ICONS[randomIndex];
+            item.innerHTML = randomIcon;
+            
+            item.classList.add("falling-item");
 
+            // Các thiết lập ngẫu nhiên khác (kích thước, vị trí)
             let size = Math.random() * 8 + 3;
-            heart.style.fontSize = size + "px";
-            heart.style.left = Math.random() * 100 + "vw";
+            item.style.fontSize = size + "px";
+            item.style.left = Math.random() * 100 + "vw";
 
-            // Tăng thời gian rơi (chậm hơn)
-            let duration = Math.random() * 6 + 4; 
-            heart.style.animationDuration = duration + "s";
+            // Rơi chậm hơn (8s đến 15s)
+            let duration = Math.random() * 7 + 8;
+            item.style.animationDuration = duration + "s";
 
-            document.body.appendChild(heart);
+            document.body.appendChild(item);
 
             setTimeout(() => {
-                heart.remove();
+                item.remove();
             }, duration * 1000);
         }
 
