@@ -366,11 +366,11 @@
             
                     <div id="FORM2" class="ladi-element">
                         <form id="rsvpForm" autocomplete="off" method="post" 
-                            action="https://script.google.com/macros/s/AKfycbxUH3kEAXRt1YpjyZYo9U56_VtCLKs1MYZyATtZw85KY3Fdn434bYsDqjmjaoLDxiKH/exec" 
+                            action="**ĐIỀN_URL_GOOGLE_SCRIPT_CỦA_BẠN_VÀO_ĐÂY**" 
                             class="ladi-form" target="hidden_iframe">
             
                             <input type="hidden" name="page_url" id="page_url" value="https://valkil.github.io/thiep-cuoi/">
-                          
+            
                             <button type="submit" id="BUTTON4" class="ladi-element ladi-animation">
                                 <div class="ladi-button">
                                     <div class="ladi-button-background"></div>
@@ -437,70 +437,17 @@
             </div>
             
             <script>
-                // 1. Tự động điền URL trang hiện tại (giữ nguyên)
+                // tự động điền URL trang hiện tại
                 document.getElementById("page_url").value = window.location.href;
             
-                // 2. Lấy các phần tử cần thiết
-                const rsvpForm = document.getElementById("rsvpForm");
-                const successSection = document.getElementById("SECTION_POPUP");
-                const closeBtn = document.getElementById("closePopupBtn"); 
-                // Thêm phần tử POPUP4
-                const popup4 = document.getElementById("POPUP4");
-                
-                // Hàm hiển thị Popup Đã Tối Ưu
-                function showSuccessPopup() {
-                    if (successSection) {
-                        // 1. Hiện phần section bao bọc
-                        successSection.style.display = 'block';
-                        successSection.style.opacity = '1';      // Đảm bảo không bị ẩn bởi opacity
-                        successSection.style.visibility = 'visible'; // Đảm bảo không bị ẩn bởi visibility
-                    }
-                    
-                    if (popup4) {
-                        // 2. Hiện phần tử popup bên trong (để nó nổi lên)
-                        popup4.style.display = 'block';
-                        popup4.style.opacity = '1';
-                        popup4.style.visibility = 'visible';
-                        
-                        // 3. Đặt Z-index cao để đảm bảo nó nổi trên cùng (rất quan trọng cho popup)
-                        successSection.style.zIndex = '99999';
-                    }
-                }
-                
-                // Hàm ẩn Popup Đã Tối Ưu
-                function hideSuccessPopup() {
-                    if (successSection) {
-                        successSection.style.display = 'none';
-                        successSection.style.opacity = '0';
-                        successSection.style.visibility = 'hidden';
-                        successSection.style.zIndex = 'auto'; // Trả về z-index
-                    }
-                }
-                
-                // 3. Xử lý sự kiện Gửi Form
-                rsvpForm.addEventListener("submit", function(event) {
-                    // Form gửi qua iframe ẩn
-                    
+                // hiển thị thông báo khi gửi xong
+                document.getElementById("rsvpForm").addEventListener("submit", function() {
+                    // Tùy chọn: Thêm một delay ngắn để form có thời gian gửi
                     setTimeout(() => {
-                        // Reset form sau khi gửi
-                        this.reset(); 
-                        
-                        // **Hiển thị Popup thành công**
-                        showSuccessPopup(); 
-                        
-                    }, 500); 
+                        alert("Gửi thành công! Cám ơn Quý Khách ♥");
+                        this.reset();
+                    }, 500);
                 });
-                
-                // 4. Xử lý sự kiện Đóng Popup
-                if (closeBtn) {
-                    closeBtn.addEventListener("click", hideSuccessPopup);
-                }
-                
-                // *Quan trọng*: Ban đầu, đảm bảo SECTION_POPUP bị ẩn khi tải trang
-                if (successSection) {
-                    hideSuccessPopup(); // Dùng hàm ẩn ngay khi tải trang
-                }
-            
             </script>
             <div id="SECTION10" class="ladi-section">
                 <div class="ladi-section-background"></div>
