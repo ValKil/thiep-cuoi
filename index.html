@@ -370,7 +370,7 @@
                             class="ladi-form" target="hidden_iframe">
             
                             <input type="hidden" name="page_url" id="page_url" value="https://valkil.github.io/thiep-cuoi/">
-            
+                          
                             <button type="submit" id="BUTTON4" class="ladi-element ladi-animation">
                                 <div class="ladi-button">
                                     <div class="ladi-button-background"></div>
@@ -437,17 +437,44 @@
             </div>
             
             <script>
-                // tự động điền URL trang hiện tại
+                // 1. Tự động điền URL trang hiện tại (giữ nguyên)
                 document.getElementById("page_url").value = window.location.href;
             
-                // hiển thị thông báo khi gửi xong
-                document.getElementById("rsvpForm").addEventListener("submit", function() {
-                    // Tùy chọn: Thêm một delay ngắn để form có thời gian gửi
+                // 2. Lấy các phần tử cần thiết
+                const rsvpForm = document.getElementById("rsvpForm");
+                const successSection = document.getElementById("SECTION_POPUP");
+                const closeBtn = document.getElementById("closePopupBtn"); 
+            
+                // Hàm hiển thị Popup
+                function showSuccessPopup() {
+                    successSection.style.display = 'block'; 
+                }
+            
+                // Hàm ẩn Popup
+                function hideSuccessPopup() {
+                    successSection.style.display = 'none';
+                }
+            
+                // 3. Xử lý sự kiện Gửi Form
+                rsvpForm.addEventListener("submit", function(event) {
+                    // Form gửi qua iframe ẩn
+                    
                     setTimeout(() => {
-                        alert("Gửi thành công! Cám ơn Quý Khách ♥");
-                        this.reset();
-                    }, 500);
+                        // Reset form sau khi gửi
+                        this.reset(); 
+                        
+                        // **Hiển thị Popup thành công (thay cho alert)**
+                        showSuccessPopup(); 
+                        
+                    }, 500); // 500ms là đủ cho quá trình gửi form ẩn
                 });
+            
+                // 4. Xử lý sự kiện Đóng Popup
+                closeBtn.addEventListener("click", hideSuccessPopup);
+            
+                // *Quan trọng*: Ban đầu, đảm bảo SECTION_POPUP bị ẩn khi tải trang
+                successSection.style.display = 'none';
+            
             </script>
             <div id="SECTION10" class="ladi-section">
                 <div class="ladi-section-background"></div>
@@ -555,40 +582,28 @@
             <div id="SECTION_POPUP" class="ladi-section">
                 <div class="ladi-section-background"></div>
                 <div class="ladi-container">
-                    <div id="POPUP1" class="ladi-element">
-                        <div class="ladi-popup">
-                            <div class="ladi-popup-background"></div>
-                            <div id="IMAGE180" class="ladi-element">
-                                <div class="ladi-image">
-                                    <div class="ladi-image-background"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="POPUP2" class="ladi-element">
-                        <div class="ladi-popup">
-                            <div class="ladi-popup-background"></div>
-                            <div id="IMAGE189" class="ladi-element">
-                                <div class="ladi-image">
-                                    <div class="ladi-image-background"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div id="POPUP4" class="ladi-element">
                         <div class="ladi-popup">
                             <div class="ladi-popup-background"></div>
+                            
                             <div id="BOX20" class="ladi-element">
                                 <div class="ladi-box ladi-transition"></div>
                             </div>
+                            
                             <div id="HEADLINE146" class="ladi-element">
                                 <h2 class="ladi-headline">Cảm ơn bạn đã dành thời gian phản hồi!<br>Chúng mình vô cùng trân quý sự quan tâm của bạn!<br></h2> 
                             </div>
+            
+                            <div id="BUTTON_CLOSE_POPUP4" class="ladi-element">
+                                <button id="closePopupBtn" type="button">OK</button>
+                            </div>
+            
                         </div>
                     </div>
+                    
                 </div>
             </div>
-        </div>
         <div id="backdrop-popup" class="backdrop-popup"></div>
         <div id="backdrop-dropbox" class="backdrop-dropbox"></div>
         <div id="lightbox-screen" class="lightbox-screen"></div>
