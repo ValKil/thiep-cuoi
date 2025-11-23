@@ -593,47 +593,43 @@
         <title>Toggle Music với Icon Tròn Xoay</title>
         <style>/* Nút tròn, nền đen mờ */#toggle-music { position: fixed; bottom: 20px; left: 20px; width: 40px; height: 40px; background: rgba(0, 0, 0, 0.3); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; color: white; cursor: pointer; z-index: 1000; transition: background 0.5s ease; } #toggle-music:hover { background: rgba(0, 0, 0, 0.5); } /* Keyframes xoay */@keyframes rotate { from {  transform: rotate(0deg); }  to {  transform: rotate(360deg); } } /* Heart fall (giữ nguyên nếu cần) */@keyframes fall { 0% {  transform: translateY(0);  opacity: 1; }  100% {  transform: translateY(100vh);  opacity: 0; } } .heart { position: fixed; color: red; font-size: 20px; top: -10px; z-index: 9999; pointer-events: none; animation: fall linear infinite; }</style>
         <!-- Audio -->
-        <audio id="background-music">
+       <audio id="background-music" loop>
             Trình duyệt không hỗ trợ HTML5 Audio.
         </audio>
         
         <script>
-            // **Playlist cố định 2 bài hát bạn đã cung cấp (sử dụng Raw URL)**
-            const playlist = [
+            // **1. Danh sách 2 bài hát bạn đã cung cấp (sử dụng Raw URL)**
+            const songList = [
                 "https://raw.githubusercontent.com/ValKil/thiep-cuoi/main/music/T%E1%BB%8F%20T%C3%ACnh_%5Bcut_166sec%5D.mp3", 
                 "https://raw.githubusercontent.com/ValKil/thiep-cuoi/main/music/ZungZangZungZe_%5Bcut_81sec%5D.mp3"
             ];
         
             const audioPlayer = document.getElementById('background-music');
-            let currentSongIndex = 0;
         
-            // Hàm phát bài hát tiếp theo và loop lại khi hết playlist
-            function playNextSong() {
-                // Cập nhật index: nếu hết (đến bài 2), quay lại bài 0 (bài đầu)
-                if (currentSongIndex >= playlist.length) {
-                    currentSongIndex = 0;
-                }
-        
-                // Thiết lập nguồn nhạc
-                audioPlayer.src = playlist[currentSongIndex];
-                audioPlayer.load();
-        
-                // Cố gắng phát nhạc
-                audioPlayer.play().then(() => {
-                    console.log(`Đang phát: Bài ${currentSongIndex + 1} (Tự động chuyển bài & Loop)`);
-                    currentSongIndex++; // Chuẩn bị cho bài tiếp theo
-                }).catch(error => {
-                    // Xử lý lỗi tự động phát (Autoplay) bị chặn
-                    console.log("Lỗi: Tự động phát bị chặn. Vui lòng TƯƠNG TÁC với trang (ví dụ: click) để bắt đầu.");
-                    // Giữ nguyên index để thử phát lại sau khi người dùng tương tác
-                });
+            /**
+             * Hàm chọn ngẫu nhiên một phần tử từ mảng.
+             * @param {Array<string>} arr - Mảng chứa các URL bài hát.
+             * @returns {string} - URL bài hát được chọn ngẫu nhiên.
+             */
+            function getRandomSong(arr) {
+                const randomIndex = Math.floor(Math.random() * arr.length);
+                return arr[randomIndex];
             }
         
-            // 1. Thiết lập Listener: Khi một bài hát kết thúc, gọi hàm phát bài tiếp theo
-            audioPlayer.addEventListener('ended', playNextSong);
+            // 2. Chọn ngẫu nhiên 1 bài hát từ danh sách 2 bài
+            const selectedSongUrl = getRandomSong(songList);
+            console.log(`Bài hát ngẫu nhiên được chọn: ${selectedSongUrl}`);
         
-            // 2. Bắt đầu phát bài hát đầu tiên
-            playNextSong();
+            // 3. Thiết lập nguồn nhạc và bắt đầu phát
+            audioPlayer.src = selectedSongUrl;
+            audioPlayer.load();
+        
+            audioPlayer.play().catch(error => {
+                // Xử lý Autoplay
+                console.warn("Lỗi: Tự động phát bị chặn. Vui lòng tương tác với trang (ví dụ: click) để bắt đầu.");
+            });
+            
+            // Thuộc tính 'loop' trong thẻ <audio> sẽ đảm bảo bài hát này lặp lại vô hạn.
         </script>
         <!-- Toggle button -->
         <button id="toggle-music" aria-label="Bật/tắt nhạc" style="animation: 2s linear 0s infinite normal none running rotate;">🔊</button>
