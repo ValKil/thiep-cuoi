@@ -467,19 +467,17 @@
             </div>
             
             <script>
-                // Tự động điền URL trang hiện tại
+                // tự động điền URL trang hiện tại
                 document.getElementById("page_url").value = window.location.href;
             
-                // Lắng nghe postMessage từ Web App để hiện thông báo
-                window.addEventListener("message", function(event){
-                    if(event.data === "success"){
+                // hiển thị thông báo khi gửi xong (quay lại alert)
+                document.getElementById("rsvpForm").addEventListener("submit", function() {
+                    // Đặt timeout để đảm bảo form có thời gian gửi qua iframe ẩn
+                    setTimeout(() => {
                         alert("Gửi thành công! Cám ơn Quý Khách ♥");
-                        document.getElementById("rsvpForm").reset();
-                    }
-                    if(event.data === "error"){
-                        alert("Gửi thất bại, vui lòng thử lại!");
-                    }
-                }, false);
+                        this.reset();
+                    }, 500);
+                });
             </script>
             
             <div id="SECTION10" class="ladi-section">
