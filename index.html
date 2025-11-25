@@ -35,27 +35,40 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Akronim&display=swap">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cormorant+Garamond&display=swap">
          <style>
-        body {
-            /* Giúp các phần tử rơi bao phủ toàn bộ trang */
-            height: 100vh;
-            margin: 0;
-           
-        }
+            body {
+                height: 100vh;
+                margin: 0;
+            }
         
-        .heart {
-            position: fixed; /* Rất quan trọng */
-            top: -50px; 
-            pointer-events: none; 
-            animation-name: fall;
-            animation-timing-function: linear; 
-            z-index: 9999;
-        }
-
-        @keyframes fall {
-            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-        }
-    </style>
+            .heart {
+                position: fixed;
+                top: -50px;
+                pointer-events: none;
+                z-index: 9999;
+        
+                animation: fall 4s linear forwards,
+                           sway 2s ease-in-out infinite alternate,
+                           spin 3s linear infinite;
+            }
+        
+            /* Rơi xuống */
+            @keyframes fall {
+                0% { transform: translateY(0); opacity: 1; }
+                100% { transform: translateY(100vh); opacity: 0; }
+            }
+        
+            /* Đung đưa trái – phải */
+            @keyframes sway {
+                0% { transform: translateX(-15px); }
+                100% { transform: translateX(15px); }
+            }
+        
+            /* Xoay nhẹ */
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(25deg); }
+            }
+        </style>
     </head>
     <body class="">
         <svg xmlns="http://www.w3.org/2000/svg" style="width: 0px; height: 0px; position: absolute; overflow: hidden; display: none;">
