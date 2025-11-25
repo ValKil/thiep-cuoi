@@ -467,18 +467,21 @@
             </div>
             
             <script>
-                // tự động điền URL trang hiện tại
+                // Tự động điền URL trang hiện tại
                 document.getElementById("page_url").value = window.location.href;
             
-                // hiển thị thông báo khi gửi xong
-                document.getElementById("rsvpForm").addEventListener("submit", function() {
-                    // Tùy chọn: Thêm một delay ngắn để form có thời gian gửi
-                    setTimeout(() => {
+                // Lắng nghe postMessage từ Web App để hiện thông báo
+                window.addEventListener("message", function(event){
+                    if(event.data === "success"){
                         alert("Gửi thành công! Cám ơn Quý Khách ♥");
-                        this.reset();
-                    }, 500);
-                });
+                        document.getElementById("rsvpForm").reset();
+                    }
+                    if(event.data === "error"){
+                        alert("Gửi thất bại, vui lòng thử lại!");
+                    }
+                }, false);
             </script>
+            
             <div id="SECTION10" class="ladi-section">
                 <div class="ladi-section-background"></div>
                 <div class="ladi-container">
