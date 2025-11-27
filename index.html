@@ -236,15 +236,21 @@
                             <div class="ladi-image-background"></div>
                         </div>
                     </div>
-                    <div id="HEADLINE136" class="ladi-element ladi-animation">
-                        <div id="ten-nguoi-nhan" class="ladi-headline ladi-transition">Gia đình...</div>
-                        <script>
-  const params = new URLSearchParams(window.location.search);
-  const ten = params.get('ten');
-  if(ten) {
-    document.getElementById('ten-nguoi-nhan').innerText = decodeURIComponent(ten);
-  }
-</script>                         
+                   <div id="HEADLINE136" class="ladi-element ladi-animation">
+                      <div id="ten-nguoi-nhan" class="ladi-headline ladi-transition">Quý khách</div>
+                    </div>
+                    
+                    <script>
+                      const params = new URLSearchParams(window.location.search);
+                      let ten = params.get('ten');
+                    
+                      if (ten) {
+                        ten = decodeURIComponent(ten).trim();
+                        if (ten.length > 0) {
+                          document.getElementById('ten-nguoi-nhan').innerText = ten;
+                        }
+                      }
+                    </script>                
                     </div>
                     <div id="GROUP132" class="ladi-element">
                         <div class="ladi-group">
